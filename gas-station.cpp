@@ -1,3 +1,6 @@
+/*************************************************
+ Solution 1: a bad solution, written in 2013
+ *************************************************/
 //time: O(n), space: O(n), find smallest coninuous sub-array
 class Solution {
 public:
@@ -56,5 +59,29 @@ public:
         if(sum < -res.sum)
             return -1;
         return (res.r + 1)%sz;
+    }
+};
+
+/*************************************************
+ Solution 2: a better solution, written in 2014
+ *************************************************/
+//time: O(n), space: O(1)
+class Solution {
+    public:
+    int canCompleteCircuit(vector<int> &gas, vector<int> &cost) {
+        int stations = gas.size(), st = 0, ed = 0, energy = 0;//gas[0];
+        while(ed < st + stations) {
+            if(energy < 0) { //move start point backward
+                st -= 1;
+                energy += (gas[st + stations] - cost[st + stations]);
+            } else {         //move end point forward
+                energy += (gas[ed] - cost[ed]);
+                ed += 1;
+            }
+        }
+        if(energy < 0)
+        return -1;
+        else
+        return (st + stations) % stations;
     }
 };
