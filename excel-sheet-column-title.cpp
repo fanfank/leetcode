@@ -1,3 +1,4 @@
+//solution 1: my solution ...
 class Solution {
 public:
     string convertToTitle(int n) {
@@ -47,3 +48,14 @@ public:
         return res.substr(start_index);
     }
 };
+
+//solution 2(好牛B的样子): 
+//refer to :
+//      https://oj.leetcode.com/discuss/19120/short-and-recursive-solution-with-note-about-algorithm-trick
+string convertToTitle(int n) {
+    string r;
+    for (; n > 0; n /= 26)  {
+        r = (char)(--n % 26 + 'A') + r;
+    }
+    return r;
+}
