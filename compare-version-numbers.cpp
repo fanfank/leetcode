@@ -1,4 +1,4 @@
-class Solution {
+class Solution { //3ms solution. O(1) space, O(n) time complexity
 public:
     int compareVersion(string version1, string version2) {
         int v1_index = 0;
